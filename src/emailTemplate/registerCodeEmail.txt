@@ -1,0 +1,32 @@
+<BODY style="MARGIN: 10px"><DIV><SPAN style="FONT-FAMILY: Calibri"></SPAN>亲爱的用户：</DIV>
+<DIV>
+<P>		您好!这封信是由 英威诺开放平台发送的                     </P>
+<P>您收到这封邮件，是由于这个邮箱地址在英威诺开放平台注册，需要获取注册码。</P>
+<P>若非本人操作，请忽略此邮件，谢谢</P>
+<P>----------------------------------------------------------------------</P>
+<P></P>
+<P>您需要将下面的验证码输入注册页面，才能继续注册：</P>
+<P></P>
+<P>您的验证码是：<b>registerCode</b></P>
+<P></P>
+<P></P>
+<P>----------------------------------------------------------------------</P>
+<P></P>
+<P></P>
+<P>此致</P>
+<P>英威诺开放平台管理团队. http://www.inveno.com</P>
+<P>此为系统邮件，请勿回复。</P>
+
+<HR style="HEIGHT: 1px; WIDTH: 210px" align=left color=#b5c4df SIZE=1>
+
+<DIV><SPAN>
+<DIV style="FONT-SIZE: 10pt; FONT-FAMILY: verdana; MARGIN: 10px">
+<DIV>
+<DIV style="FONT-SIZE: 10pt; FONT-FAMILY: verdana; MARGIN: 10px">
+<DIV>
+<DIV style="FONT-SIZE: 10pt; FONT-FAMILY: verdana; MARGIN: 10px">
+<DIV>英威诺开放平台</DIV>
+<DIV>客服邮箱：<A href="mailto:service@inveno.com">service@inveno.com</A></DIV>
+<DIV>微信公众账号：XZKnowYou</DIV>
+<DIV>联系电话：0755-26717733</DIV>
+<DIV>英威诺官网：www.inveno.com</DIV>

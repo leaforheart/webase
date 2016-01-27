@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<context:property-placeholder
+		location="classpath:db-connection.properties" />
+	
+
+	<bean id="dataSource"
+		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${jdbc.driverClassName}" />
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+		<!--initialSize: 初始化连接 -->
+		<property name="initialSize" value="5" />
+		<!--maxIdle: 最大空闲连接 -->
+		<property name="maxIdle" value="10" />
+		<!--minIdle: 最小空闲连接 -->
+		<property name="minIdle" value="5" />
+		<!--maxActive: 最大连接数量 -->
+		<property name="maxActive" value="15" />
+		<!--removeAbandoned: 是否自动回收超时连接 -->
+		<property name="removeAbandoned" value="true" />
+		<!--removeAbandonedTimeout: 超时时间(以秒数为单位) -->
+		<property name="removeAbandonedTimeout" value="180" />
+		<!--maxWait: 超时等待时间以毫秒为单位 6000毫秒/1000等于60秒 -->
+		<property name="maxWait" value="3000" />
+		<!-- 连接被泄露时是否打印 -->  
+        <property name="logAbandoned" value="true"/>
+		<property name="validationQuery">
+			<value>SELECT 1</value>
+		</property>
+		<property name="testOnBorrow">
+			<value>true</value>
+		</property>
+	</bean>
+
+	<!-- hibernate 事务 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+
+	<bean id="transactionInterceptor"
+		class="org.springframework.transaction.interceptor.TransactionInterceptor">
+		<!--   事务拦截器bean需要依赖注入一个事务管理器 -->
+		<property name="transactionManager" ref="transactionManager" />
+		<property name="transactionAttributes">
+			<!--   下面定义事务传播属性-->
+			<props>
+				<prop key="*">PROPAGATION_REQUIRED</prop>
+				<prop key="find*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="load*">PROPAGATION_REQUIRED,readOnly</prop>
+				<prop key="noTran*">PROPAGATION_NOT_SUPPORTED,readOnly</prop>
+			</props>
+		</property>
+	</bean>
+	<bean
+		class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames">
+			<!--下面是所有需要自动创建事务代理的bean-->
+			<list>
+				<value>*Service</value>
+			</list>
+		</property>
+		<property name="interceptorNames">
+			<list>
+				<value>transactionInterceptor</value>
+				<!-- 此处可增加其他新的Interceptor -->
+			</list>
+		</property>
+	</bean>
+</beans>

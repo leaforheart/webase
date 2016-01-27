@@ -1,0 +1,26 @@
+package com.inveno.cps.common.util;
+
+/**
+ * 
+ * 系统常量定义接口
+ * 此类中变量默认为 public final static 类型
+ * 2011-1-12
+ * @author yaoyuan
+ *
+ */
+public interface Constants{
+	
+	String SESSION_IDENTIFIER = "sessionid";//会话标识
+	String MARKET_OFFLINE = "updateMarketSetStateOffline";
+	String AUTHCODE_KEY = "inveno";
+	String RETURN_CODE = "rCode";//返回码
+	String SERVER_CODE = "-666";//cps程序异常时的返回码值
+	String SUCCESS_CODE = "0";//成功返回时，返回的返回码值
+	String ROOT_PARENT="-9";//根目录的父id
+	
+	//permission类型
+	String CATALOG_TYPE= "0";
+	String PAGE_TYPE="1";
+	String BUTTON_TYPE="2";
+
+}

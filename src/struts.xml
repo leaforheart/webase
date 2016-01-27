@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+	"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.locale" value="zh_CN" />
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<constant name="struts.action.extension" value="action" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources,errors" />
+	<constant name="struts.multipart.maxSize" value="204800000" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.enable.SlashesInActionNames" value="true" />
+	<constant name="struts.multipart.saveDir" value="/tmp" />
+	
+	<package name="cps-default" extends="json-default" namespace="/">
+		<result-types>
+			<result-type name="json" class="org.apache.struts2.json.JSONResult"></result-type>
+		</result-types>
+	</package>
+	
+<!-- 	<include file="com/inveno/cps/authority/struts-authority.xml"></include> -->
+		
+</struts>

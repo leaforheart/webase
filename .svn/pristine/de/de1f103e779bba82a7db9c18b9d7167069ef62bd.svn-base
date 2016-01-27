@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ 
+<permission project="ssp">
+	<navigation>
+		<catalog memo="catalog1" url="10000">
+			<page memo="page1" url="/page1.html">
+				<button memo="button1" url="/button1.action" />
+				<button memo="button2" url="/button2.action" ishide="1" />
+				<button memo="button5" url="/button5.action" />
+			</page>
+			<page memo="page2" url="/page2.html" ishide="1">
+				<button memo="button4" url="/button4.action" />
+				<button memo="button5" url="/button5.action" />
+			</page>
+			<page memo="page3" url="/page3.html">
+				<button memo="button6" url="/button6.action" />
+			</page>
+			<page  memo="page4" url="/page4.html"/>
+			<catalog memo="catalog2" url="11000">
+				<page  memo="page5" url="/page5.html"/>
+			</catalog>
+		</catalog>
+		<catalog memo="catalog3" url="20000">
+			<page memo="page6" url="/page6.html">
+				<button  memo="button7" url="/button7.action"/>
+				<page memo="page8" url="/page8.html">
+					<button  memo="button9" url="/button9.action"/>
+				</page>
+			</page>
+		</catalog>
+		<page memo="page7" url="/page7.html">
+			<button  memo="button8" url="/button8.action"/>
+		</page>
+	</navigation>
+	<unavigation>
+		<page memo="page9" url="/page9.html">
+			<button memo="button10" url="/button10.action"/>
+		</page>
+		<button memo="button11" url="/button11.action"/>
+	</unavigation>
+	<exclude>
+		<url url="/index.html"/>
+	</exclude>
+</permission>

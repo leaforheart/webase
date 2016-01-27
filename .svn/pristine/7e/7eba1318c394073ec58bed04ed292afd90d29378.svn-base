@@ -1,0 +1,131 @@
+package com.inveno.cps.review.model;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
+
+import com.inveno.base.BaseModel;
+@Entity
+@Table(name = "cps_bussiness_workflow")
+@org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = true)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class BussinessWorkflow extends BaseModel {
+
+	private static final long serialVersionUID = 1765856781521837513L;
+
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(generator = "BussinessWorkflowGenerate", strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "BussinessWorkflowGenerate", strategy = "native")
+	private String id;
+	
+	@Column(name = "bussiness_type_id")
+	private String bussiness_type_id;
+	
+	@Column(name = "bussiness_id")
+	private String bussiness_id;
+	
+	@Column(name = "last_state")
+	private String last_state;
+	
+	@Column(name = "action")
+	private String action;
+	
+	@Column(name = "cur_state")
+	private String cur_state;
+	
+	@Column(name = "reason")
+	private String reason;
+	
+	@Column(name = "oper_time")
+	private String oper_time;
+
+	@Column(name = "create_time")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createTime;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getBussiness_type_id() {
+		return bussiness_type_id;
+	}
+
+	public void setBussiness_type_id(String bussiness_type_id) {
+		this.bussiness_type_id = bussiness_type_id;
+	}
+
+	public String getBussiness_id() {
+		return bussiness_id;
+	}
+
+	public void setBussiness_id(String bussiness_id) {
+		this.bussiness_id = bussiness_id;
+	}
+
+	public String getLast_state() {
+		return last_state;
+	}
+
+	public void setLast_state(String last_state) {
+		this.last_state = last_state;
+	}
+
+	public String getAction() {
+		return action;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
+	}
+
+	public String getCur_state() {
+		return cur_state;
+	}
+
+	public void setCur_state(String cur_state) {
+		this.cur_state = cur_state;
+	}
+
+	public String getReason() {
+		return reason;
+	}
+
+	public void setReason(String reason) {
+		this.reason = reason;
+	}
+
+	public String getOper_time() {
+		return oper_time;
+	}
+
+	public void setOper_time(String oper_time) {
+		this.oper_time = oper_time;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+	
+	
+}

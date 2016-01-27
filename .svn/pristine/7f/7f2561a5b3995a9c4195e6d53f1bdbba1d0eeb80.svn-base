@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="jquery-2.1.4.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="ajaxfileupload.js" type="text/javascript"></script>
+</head>
+<body>
+<form>
+<input type="file" id="xml" name="authorityBean.xml" accept=".xml"/>
+</form>
+</body>
+
+<script type="text/javascript">
+$("#xml").on("change",function(){
+	
+		$.ajaxFileUpload({ 
+			url: '/cps/authority/uploadXml.action', 
+			secureuri: false,
+			name:"authorityBean.xml",
+			fileElementId: 'xml', 
+			dataType: 'json', 
+			cache:false,
+			success: function (data, status) { 
+				
+			} 
+		});
+
+});
+</script>
+
+</html>

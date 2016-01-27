@@ -1,0 +1,15 @@
+#### server type:	simple,thread-pool,nonblocking,threaded-selector 
+#### protocol type:	binary,json,compact 
+#### transport type:buffered,framed,fastframed
+
+host=127.0.0.1
+port=9090
+protocol_type=binary
+transport_type=framed
+ssl=false
+socketTimeout=0
+
+client=com.inveno.cps.authenticate.thrift.AuthenticateService,com.inveno.cps.authority.thrift.AuthorityService
+
+projects=ssp,dsp
+curProject=ssp

@@ -1,0 +1,40 @@
+package com.inveno.cps.thrift;
+
+import org.apache.thrift.TMultiplexedProcessor;
+import com.inveno.cps.authenticate.service.AuthenticateServiceImpl;
+import com.inveno.cps.authenticate.thrift.AuthenticateService;
+import com.inveno.cps.authority.service.AuthorityServiceImpl;
+import com.inveno.cps.authority.thrift.AuthorityService;
+
+public class ProcessorFactoryImpl implements ProcessorFactory {
+	private AuthenticateService.Iface authenticateService;
+	private AuthorityService.Iface authorityService;
+	
+	public AuthorityService.Iface getAuthorityService() {
+		return authorityService;
+	}
+	public void setAuthorityService(AuthorityService.Iface authorityService) {
+		this.authorityService = authorityService;
+	}
+	public AuthenticateService.Iface getAuthenticateService() {
+		return authenticateService;
+	}
+	public void setAuthenticateService(AuthenticateService.Iface authenticateService) {
+		this.authenticateService = authenticateService;
+	}
+	
+	@Override
+	public TMultiplexedProcessor getProcessor() {
+		
+		TMultiplexedProcessor processor = new TMultiplexedProcessor();
+		
+		AuthenticateService.Processor<AuthenticateService.Iface> authenticateProcess = new AuthenticateService.Processor<AuthenticateService.Iface>(authenticateService);
+		AuthorityService.Processor<AuthorityService.Iface> authorityProcess = new AuthorityService.Processor<AuthorityService.Iface>(authorityService);
+		processor.registerProcessor("AuthenticateService", authenticateProcess);
+		processor.registerProcessor("AuthorityService", authorityProcess);
+		
+		return processor;
+		
+	}
+
+}

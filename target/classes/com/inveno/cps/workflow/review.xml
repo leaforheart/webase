@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<workflow name="广告位审核">
+	<state value="1" name="待审核" type="1">
+		<action value="1" name="审核通过" actorId="79" actorType="1" nextState="2"/>
+		<action value="2" name="审核驳回" actorId="79" actorType="1" nextState="3"/>
+	</state>
+	
+	<state value="2" name="已审核通过" type="2">
+		<action value="1" name="初始化" actorId="-1" actorType="2" nextState="1"/>
+		<action value="2" name="结束" actorId="-1" actorType="2" nextState="4"/>
+	</state>
+	
+	<state value="3" name="已审核驳回" type="2">
+		<action value="1" name="初始化" actorId="-1" actorType="2" nextState="1"/>
+		<action value="2" name="结束" actorId="-1" actorType="2" nextState="5"/>
+	</state>
+	
+	<state value="4" name="正常结束" type="3"/>
+	
+	<state value="5" name="异常结束" type="4"/>
+	
+</workflow>

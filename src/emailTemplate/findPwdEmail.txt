@@ -1,0 +1,37 @@
+<BODY style="MARGIN: 10px"><DIV><SPAN style="FONT-FAMILY: Calibri"></SPAN>亲爱的用户：</DIV>
+<DIV>
+<P>		您好!这封信是由 英威诺开放平台 发送的。。</P>
+<P>您收到这封邮件，是由于这个邮箱地址在 英威诺开放平台 被登记为用户邮箱， 且该用户请求使用 Email 密码重置功能所致。</P>
+<P></P>
+<P>----------------------------------------------------------------------</P>
+<P>重要！</P>
+<P>----------------------------------------------------------------------</P>
+<P></P>
+<P>如果您没有提交密码重置的请求或不是 英威诺开放平台 的注册用户，请立即忽略 并删除这封邮件。只有在您确认需要重置密码的情况下，才需要继续阅读下面的 内容。</P>
+<P></P>
+<P>----------------------------------------------------------------------</P>
+<P>密码重置说明</P>
+<P>----------------------------------------------------------------------</P>
+<P></P>
+<P>您只需在提交请求后的30分钟内，通过点击下面的链接重置您的密码：</P>
+<P><a href="findpwdUrl" target="_blank">findpwdUrl</a></P>
+<P>(如果上面不是链接形式，请将该地址手工粘贴到浏览器地址栏再访问)</P>
+<P>在上面的链接所打开的页面中输入新的密码后提交，您即可使用新的密码登录网站了。您可以在用户控制面板中随时修改您的密码。</P>
+<P></P>
+<P>此致</P>
+<P>英威诺开放平台 管理团队. http://www.inveno.com</P>
+<P>此为系统邮件，请勿回复。</P>
+
+<HR style="HEIGHT: 1px; WIDTH: 210px" align=left color=#b5c4df SIZE=1>
+
+<DIV><SPAN>
+<DIV style="FONT-SIZE: 10pt; FONT-FAMILY: verdana; MARGIN: 10px">
+<DIV>
+<DIV style="FONT-SIZE: 10pt; FONT-FAMILY: verdana; MARGIN: 10px">
+<DIV>
+<DIV style="FONT-SIZE: 10pt; FONT-FAMILY: verdana; MARGIN: 10px">
+<DIV>英威诺开放平台</DIV>
+<DIV>客服邮箱：<A href="mailto:service@inveno.com">service@inveno.com</A></DIV>
+<DIV>微信公众账号：XZKnowYou</DIV>
+<DIV>联系电话：0755-26717733</DIV>
+<DIV>英威诺官网：www.inveno.com</DIV>

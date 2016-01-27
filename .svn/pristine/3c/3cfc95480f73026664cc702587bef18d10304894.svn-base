@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "log4j:configuration" "log4j.dtd" >
+<log4j:configuration>
+	<appender name="toConsoler" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout" >
+			<param name="ConversionPattern" value="[%d{ISO8601}] [%t] %-5p %c %x - %m%n"/>
+		</layout>
+	</appender>
+	<appender name="toFile" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="${catalina.home}/logs/cps_daily.log"/>
+		<param name="maxFileSize" value="10000kb"/>
+		<param name="maxBackupIndex" value="10"/>
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{ISO8601}] [%t] %-5p %c %x - %m%n"/>
+		</layout>
+	</appender>
+	<logger name="com.inveno.cps" additivity="false">
+		<level value="info"></level>
+		<appender-ref ref="toConsoler" />
+		<appender-ref ref="toFile"/>
+	</logger>
+	<logger name="com.inveno.filter" additivity="false">
+		<level value="info"></level>
+		<appender-ref ref="toConsoler" />
+		<appender-ref ref="toFile"/>
+	</logger>
+	<logger name="org.hibernate.SQL" additivity="false" >
+		<level value="debug"></level>
+		<appender-ref ref="toConsoler" />
+		<appender-ref ref="toFile"/>
+	</logger>
+	<logger name="com.opensymphony" additivity="false" >
+		<level value="warn"></level>
+		<appender-ref ref="toConsoler" />
+		<appender-ref ref="toFile"/>
+	</logger>
+	<root>
+		<level value="warn"></level>
+		<appender-ref ref="toConsoler" />
+		<appender-ref ref="toFile" />
+	</root>
+</log4j:configuration>

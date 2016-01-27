@@ -1,0 +1,358 @@
+package com.inveno.cps.authenticate.model;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
+import com.inveno.base.BaseModel;
+
+
+/***
+ * 系统用户实体类
+ * @author LQ
+ * @since 2011-2-9;
+ * 
+ */
+@Entity
+@Table(name = "t_user")
+@org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = true)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class UserModel extends BaseModel {
+
+	private static final long serialVersionUID = 1L;
+    /***
+     * 系统用户ID,主键
+     */
+	@Id
+	@Column(name = "user_id")
+	@GeneratedValue(generator = "userGenerate", strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "userGenerate", strategy = "native")
+	private String id;
+    
+	/***
+	 * 用户名称
+	 */
+	@Column(name="username")
+	private String username;
+    
+	/***
+	 * 用户密码
+	 */
+	@Column(name="password")
+	private String password;
+    
+	/**
+	 * 用户真实姓名
+	 */
+	@Column(name="realname")
+	private String realname;
+    
+	/***
+	 * 职位
+	 */
+	@Column(name="position")
+	private String position;
+    
+	/***
+	 * 电话
+	 */
+	@Column(name="telephone")
+	private String telephone;
+    
+	/***
+	 * email
+	 */
+	@Column(name="email")
+	private String email;
+   
+	/***
+	 * 用户IP地址
+	 */
+	@Column(name="userIp")
+	private String userIp;
+    
+	/***
+	 * 上次登陆IP地址
+	 */
+	@Column(name="lastIp")
+	private String lastIp;
+    
+	/***
+	 * 用户是否在线
+	 */
+	@Column(name = "online", nullable = false)
+	@Type(type="yes_no")
+	private boolean online;
+    
+	/***
+	 * 用户状态,启用还是禁用
+	 */
+	@Column(name="state")
+	private String state;
+	
+	/** 最后一次修改时间 */
+	@Column(name = "last_upd_time")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date lastUpdTime;
+	
+	/** 备注 */
+	@Column(name = "memo")
+	private String memo;
+	
+	/** 类别创建时间 */
+	@Column(name = "create_time")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createTime;
+	
+	/**当前登录用户所能看到的后台系统id集*/
+	@Column(name = "user_sys")
+	private String userSys;
+	
+	public String getUserSys() {
+		return userSys;
+	}
+
+	public void setUserSys(String userSys) {
+		this.userSys = userSys;
+	}
+
+	/** 校验码*/
+	@Transient
+	private String checkCode; 
+	
+	/** 用户角色集合 */
+	//@OneToMany(mappedBy = "user",cascade=CascadeType.ALL)
+	//private Set<UserRole> userRoleSet = new HashSet<UserRole>(10);
+	
+	/**员工访问路径*/
+	@Transient
+	private String visitPath;
+	
+	/**改密码时的新密码*/
+	@Transient
+	private String newPassword;
+	
+	/** 返回url地址 */
+	@Transient
+	private String backUrl;
+	/** 系统模块id */
+	@Transient
+	private String moduleId;
+	
+	/*
+	 * 用户类型
+	 */
+	@Column(name="type")
+	private int type;
+	
+	/*
+	 * 第三方账号信息id
+	 */
+	@Column(name="firm_id")
+	private int firmId;
+	
+	/*
+	 * 账号开启/关闭
+	 */
+	@Column(name="open_close")
+	private int openClose;
+	
+	
+	
+	public int getOpenClose() {
+		return openClose;
+	}
+
+	public void setOpenClose(int openClose) {
+		this.openClose = openClose;
+	}
+
+	public int getFirmId() {
+		return firmId;
+	}
+
+	public void setFirmId(int firmId) {
+		this.firmId = firmId;
+	}
+
+	public String getModuleId() {
+		return moduleId;
+	}
+
+	public void setModuleId(String moduleId) {
+		this.moduleId = moduleId;
+	}
+
+	public String getBackUrl() {
+		return backUrl;
+	}
+
+	public void setBackUrl(String backUrl) {
+		this.backUrl = backUrl;
+	}
+
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	/*public Set<UserRole> getUserRoleSet() {
+		return userRoleSet;
+	}
+
+	public void setUserRoleSet(Set<UserRole> userRoleSet) {
+		this.userRoleSet = userRoleSet;
+	}*/
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getRealname() {
+		return realname;
+	}
+
+	public void setRealname(String realname) {
+		this.realname = realname;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public String getTelephone() {
+		return telephone;
+	}
+
+	public void setTelephone(String telephone) {
+		this.telephone = telephone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getUserIp() {
+		return userIp;
+	}
+
+	public void setUserIp(String userIp) {
+		this.userIp = userIp;
+	}
+
+	public String getLastIp() {
+		return lastIp;
+	}
+
+	public void setLastIp(String lastIp) {
+		this.lastIp = lastIp;
+	}
+
+	public boolean isOnline() {
+		return online;
+	}
+
+	public void setOnline(boolean online) {
+		this.online = online;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public Date getLastUpdTime() {
+		return lastUpdTime;
+	}
+
+	public void setLastUpdTime(Date lastUpdTime) {
+		this.lastUpdTime = lastUpdTime;
+	}
+
+	public String getMemo() {
+		return memo;
+	}
+
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getCheckCode() {
+		return checkCode;
+	}
+
+	public void setCheckCode(String checkCode) {
+		this.checkCode = checkCode;
+	}
+
+	public String getVisitPath() {
+		return visitPath;
+	}
+
+	public void setVisitPath(String visitPath) {
+		this.visitPath = visitPath;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+}

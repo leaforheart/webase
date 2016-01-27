@@ -1,0 +1,12 @@
+#\u6570\u636e\u5e93\u8fde\u63a5\u53c2\u6570
+#########=======AUTO_ADD_PROPERTIES_CONNECTION_BEGIN=========########
+jdbc.driverClassName=com.mysql.jdbc.Driver
+#jdbc.url=jdbc:mysql://192.168.1.2:3306/db_mta?useUnicode=true&characterEncoding=utf-8
+#jdbc.username=root
+#jdbc.password=invenodb123
+
+jdbc.url=jdbc:mysql://127.0.0.1:3306/webase?useUnicode=true&characterEncoding=utf-8
+jdbc.username=root
+jdbc.password=webase
+jdbc.maxconn=2000
+

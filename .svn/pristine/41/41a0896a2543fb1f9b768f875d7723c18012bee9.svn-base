@@ -1,0 +1,238 @@
+package com.inveno.cps.authority.model;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
+
+import com.inveno.base.BaseModel;
+import com.inveno.util.StringUtil;
+
+/**
+ * 权限菜单表
+ * 
+ * 2011-3-25
+ * 
+ * @author yaoyuan
+ */
+@Entity
+@Table(name = "t_permission")
+@org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = true)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@org.hibernate.annotations.Proxy(lazy = false)
+public class Permission extends BaseModel {
+
+	private static final long serialVersionUID = 1L;
+
+	/** 主键 */
+	@Id
+	@Column(name = "permission_id")
+	@GeneratedValue(generator = "permissionGenerate", strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "permissionGenerate", strategy = "native")
+	private String id;
+
+	/** 父id */
+	@Column(name = "parent_id")
+	private String parentId;
+
+	/** 对应的操作action */
+	@Column(name = "action")
+	private String action;
+
+	/** 备注 */
+	@Column(name = "memo")
+	private String memo;
+
+	/** 创建时间 */
+	@Column(name = "create_time")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createTime;
+
+	/** 修改时间 */
+	@Column(name = "last_upd_time")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date lastUpdTime;
+	
+	/** 菜单或按钮 1=菜单 2=按钮 */
+	@Column(name = "type")
+	private String type;
+	
+	/** 菜单对应的url */
+	@Column(name = "url")
+	private String url;
+	
+	/** 菜单标识：1-商城后台菜单；2-报表系统菜单 */
+	@Column(name ="flag")
+	private String flag;
+	
+	/**是否选中*/
+	//@Transient
+	//private boolean check=false;
+	
+
+	/** 菜单状态：1-菜单正在使用；2-菜单标示为删除 */
+	@Column(name ="state")
+	private String state;
+	
+	/** 是否有子节点 */
+	//@Transient
+	//private String state="closed";
+	
+	/** 子节点集合 */
+	//@Transient
+	//private List<Permission> children;
+	
+	/** 当前菜单所属的系统模块 */
+	@Column(name = "per_sys")
+	private String persys;
+	
+
+	/** 当前菜单是否隐藏(迁移系统使用 0 不隐藏,1隐藏) */
+	@Column(name = "is_hide")
+	private String isHide;
+	
+	@Column(name = "project_name")
+	private String projectName;
+	
+	@Transient
+	private List<Permission> zlist;
+	
+	@Transient
+	private String uiSref;
+	
+
+	public String getUiSref() {
+		return uiSref;
+	}
+
+	public void setUiSref(String uiSref) {
+		this.uiSref = uiSref;
+	}
+
+	public List<Permission> getZlist() {
+		return zlist;
+	}
+
+	public void setZlist(List<Permission> zlist) {
+		this.zlist = zlist;
+	}
+
+	public String getProjectName() {
+		return projectName;
+	}
+
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
+	}
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getParentId() {
+		if(StringUtil.isEmpty(parentId))
+			parentId="1";//移动商城菜单
+		return parentId;
+	}
+
+	public void setParentId(String module) {
+		this.parentId = module;
+	}
+
+	public String getAction() {
+		return action;
+	}
+
+	public void setAction(String action) {
+		this.action = action;
+	}
+
+	public String getMemo() {
+		return memo;
+	}
+
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public Date getLastUpdTime() {
+		return lastUpdTime;
+	}
+
+	public void setLastUpdTime(Date lastUpdTime) {
+		this.lastUpdTime = lastUpdTime;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public void setState(String state) {
+		this.state = state;
+	}
+
+	public String getPersys() {
+		return persys;
+	}
+
+	public void setPersys(String persys) {
+		this.persys = persys;
+	}
+
+	public String getIsHide() {
+		return isHide;
+	}
+
+	public void setIsHide(String isHide) {
+		this.isHide = isHide;
+	}
+
+}

@@ -1,0 +1,68 @@
+package com.inveno.cps.authority.model;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
+
+import com.inveno.base.BaseModel;
+
+@Entity
+@Table(name = "t_catalog")
+@org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = true)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class Catalog extends BaseModel {
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(generator = "catalogGenerate", strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "catalogGenerate", strategy = "native")
+	private String id;
+	
+	@Column(name = "permission_id")
+	private String permissionId;
+	
+	@Column(name = "project")
+	private String project;
+	
+	@Column(name = "create_time")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createTime;
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getPermissionId() {
+		return permissionId;
+	}
+	public void setPermissionId(String permissionId) {
+		this.permissionId = permissionId;
+	}
+	public String getProject() {
+		return project;
+	}
+	public void setProject(String project) {
+		this.project = project;
+	}
+	public Date getCreateTime() {
+		return createTime;
+	}
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+	
+}

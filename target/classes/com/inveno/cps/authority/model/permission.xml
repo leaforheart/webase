@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ 
+<permission project="ssp">
+	<navigation>
+		<catalog memo="用户管理" url="10000">
+			<page memo="用户信息" url="/view/user/info.html" ui-sref="Userinfo">
+				<page memo="新增用户信息" url="/view/user/infoNew.html">
+					<page memo="新增公司用户信息" url="/view/user/infoNewComp.html">
+						<button memo="新增用户信息" url="/admin/openuser/saveOpenUser.action"/>
+					</page>
+					<page memo="新增个人用户信息" url="/view/user/infoNewIndiv.html">
+						<button memo="新增用户信息" url="/admin/openuser/saveOpenUser.action"/>
+					</page>
+				</page>
+				<page memo="查看公司用户信息" url="/view/user/infoViewComp.html">
+				</page>
+				<page memo="查看个人用户信息" url="/view/user/infoViewIndiv.html">
+				</page>
+				<page memo="更新公司用户信息" url="/view/user/infoUpdateComp.html">
+					<button memo="更新用户信息" url="/admin/openuser/updateOpenUser.action"/>
+				</page>
+				<page memo="更新个人用户信息" url="/view/user/infoUpdateIndiv.html">
+					<button memo="更新用户信息" url="/admin/openuser/updateOpenUser.action"/>
+				</page>
+				<button memo="获取公司用户信息" url="/admin/openuser/getOpenUser.action"/>
+			</page>
+		</catalog>
+		<catalog memo="媒体管理" url="20000" >
+			<page memo="查看应用" url="/view/media/app.html" ui-sref="MediaApp">
+				<page memo="查看应用页面" url="/view/media/appView.html">
+					<button  memo="获取应用列表" url="/admin/application/getApplicationList.action"/>
+					<button  memo="获取应用类型列表" url="/admin/application/getAppTypeList.action"/>
+					<button  memo="修改应用" url="/admin/application/updateApplication.action"/>
+				</page>
+				<page memo="新建应用页面" url="/view/media/appNew.html">
+					<button  memo="获取应用类型列表" url="/admin/application/getAppTypeList.action"/>
+					<button  memo="保存应用" url="/admin/application/saveApplication.action"/>
+				</page>
+			</page>
+			<page memo="查看广告位" url="/view/media/ad.html" ui-sref="MediaAd">
+				<page memo="查看广告位页面" url="/view/media/adView.html">
+					<button  memo="获取广告位列表" url="/admin/adPosition/getAdPositionList.action"/>
+					<button  memo="获取应用列表" url="/admin/application/getApplicationList.action"/>
+					<button  memo="获取广告位尺寸列表" url="/admin/adPosition/getAdPositionSizeList.action"/>
+					<button  memo="开启/关闭广告位" url="/admin/adPosition/updateAdPositionStatus.action"/>
+					<button  memo="修改广告位" url="/admin/adPosition/updateAdPosition.action"/>
+				</page>
+				<page memo="新建广告位页面" url="/view/media/adNew.html">
+					<button  memo="获取应用列表" url="/admin/application/getApplicationList.action"/>
+					<button  memo="创建广告位" url="/admin/adPosition/createAdPosition.action"/>
+					<button  memo="获取广告位尺寸列表" url="/admin/adPosition/getAdPositionSizeList.action"/>
+					<button  memo="获取应用列表" url="/admin/application/getApplicationList.action"/>
+				</page>
+			</page>
+		</catalog>
+		<catalog memo="接入管理" url="30000">
+			<page memo="SDK接入" url="/view/interface/sdk.html" ui-sref="InterfaceSdk">
+				<button  memo="下载SDK包" url="/admin/download/adJoinDownload.action"/>
+			</page>
+			<page memo="JS接入" url="/view/interface/js.html" ui-sref="InterfaceJs">
+				<button  memo="下载JS包" url="/admin/download/adJoinDownload.action"/>
+			</page>
+			<page memo="API接入" url="/view/interface/api.html" ui-sref="InterfaceApi">
+			</page>
+		</catalog>
+	</navigation>
+	<unavigation>
+		<!-- 
+		<page memo="登录页面" url="/view/user/login.html">
+			<button memo="登录" url="/admin/user/login.action"/>
+		</page>
+		<page memo="注册页面" url="/view/user/regist.html">
+			<button memo="发送注册邮件" url="/admin/user/sendEnrollEmail.action"/>
+			<button memo="注册" url="admin/user/enroll.action"/>
+		</page>
+		<page memo="操作成功提示页面" url="/view/user/loginSuccess.html"/>
+		<page memo="忘记密码页面" url="/view/user/forgetPwd.html">
+			<button memo="发送找回密码邮件" url="/admin/user/getBack.action"></button>
+		</page>
+		<page memo="重置密码页面" url="/view/user/resetPwd.html">
+			<button memo="重置密码" url="/admin/user/setPassword.action"></button>
+		</page>
+		<page memo="邮件链接失效页面" url="/view/user/resetFail.html"/>
+		<page memo="更新密码页面" url="/view/user/updatePwd.html">
+			<button memo="更新密码" url="/admin/user/resetPassword.action"></button>
+		</page>
+		<page memo="下载错误页面" url="/view/media/downloadError.html"/>
+		<page memo="头页面" url="/view/public/header.html"/>
+		<page memo="导航页面" url="/view/public/leftNav.html"/>
+		<button memo="安全退出" url="/admin/user/loginOut.action"/>
+		<button memo="获取用户基本信息" url="/admin/user/getUserInfo.action"/>
+		<button memo="跳转找回密码" url="/admin/user/validGetBack" />
+		 -->
+		<button memo="上传图片" url="/admin/openuser/uploadMediaUserImg.action"/>
+		<button  memo="上传应用" url="/admin/application/uploadApp.action"/>
+	</unavigation>
+	<exclude>
+		<url memo="登录页面" url="/view/user/login.html"/>
+		<url memo="登录" url="/admin/user/login.action"/>
+		<url memo="注册页面" url="/view/user/regist.html"/>
+		<url memo="发送注册邮件" url="/admin/user/sendEnrollEmail.action"/>
+		<url memo="注册" url="admin/user/enroll.action"/>
+		<url memo="操作成功提示页面" url="/view/user/loginSuccess.html"/>
+		<url memo="忘记密码页面" url="/view/user/forgetPwd.html"/>
+		<url memo="发送找回密码邮件" url="/admin/user/getBack.action"/>
+		<url memo="重置密码页面" url="/view/user/resetPwd.html"/>
+		<url memo="重置密码" url="/admin/user/setPassword.action"/>
+		<url memo="邮件链接失效页面" url="/view/user/resetFail.html"/>
+		<url memo="更新密码页面" url="/view/user/updatePwd.html"/>
+		<url memo="更新密码" url="/admin/user/resetPassword.action"/>
+		<url memo="下载错误页面" url="/view/media/downloadError.html"/>
+		<url memo="头页面" url="/view/public/header.html"/>
+		<url memo="导航页面" url="/view/public/leftNav.html"/>
+		<url memo="安全退出" url="/admin/user/loginOut.action"/>
+		<url memo="获取用户基本信息" url="/admin/user/getUserInfo.action"/>
+		<url memo="跳转找回密码" url="/admin/user/validGetBack.action" />
+	</exclude>
+</permission>

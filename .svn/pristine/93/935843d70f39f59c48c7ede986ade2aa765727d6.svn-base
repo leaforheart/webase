@@ -1,0 +1,225 @@
+package com.inveno.cps.dictionary.model;
+
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.GenericGenerator;
+
+import com.inveno.base.BaseModel;
+
+/***
+ * 数据词典Model
+ * 
+ * @author LQ
+ */
+@Entity
+@Table(name = "dd_table")
+@org.hibernate.annotations.Entity(dynamicInsert = true, dynamicUpdate = true)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+public class Dd extends BaseModel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	/***
+	 * 主键
+	 */
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(generator = "ddGenerate", strategy = GenerationType.IDENTITY)
+	@GenericGenerator(name = "ddGenerate", strategy = "native")
+	private String id;
+	/***
+	 * 父类ID
+	 */
+	@Column(name = "parent_id")
+	private String parentId;
+    
+	/***
+	 * 子类型分类
+	 */
+	@Column(name="child_type")
+	private String childType;
+	
+	/***
+	 * 类型代码(yaoyuan 一般无用，主要放取要有变动的获取的值与childType 不一样)
+	 * 
+	 */
+	@Column(name="code")
+	private String code;
+    
+	/***
+	 * 类型名描述
+	 */
+	@Column(name="type_name")
+	private String typeName;
+    
+	/***
+	 * 类型描述
+	 */
+	@Column(name="properties")
+	private int properties;
+    
+	/***
+	 * 状态
+	 */
+	@Column(name="status")
+	private int status;
+    
+	/***
+	 * 备注
+	 */
+	@Column(name="memo")
+	private String memo;
+    
+	/** 创建时间 */
+	@Column(name = "create_time")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createTime;
+    
+	/** 最后一次修改时间 */
+	@Column(name = "last_upd_time")
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date lastUpdTime;
+	
+	/*
+	 * 类型的属性：是否有页面操作来完成状态的转换
+	 */
+	@Column(name="type")
+	private int type;
+	
+	@Transient
+	private String typeDesc;
+	
+	@Transient
+	private int state;
+	
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public int getProperties() {
+		return properties;
+	}
+
+	public void setProperties(int properties) {
+		this.properties = properties;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public String getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(String parentId) {
+		this.parentId = parentId;
+	}
+
+	public String getChildType() {
+		return childType;
+	}
+
+	public void setChildType(String childType) {
+		this.childType = childType;
+	}
+
+	public String getTypeName() {
+		return typeName;
+	}
+
+	public void setTypeName(String typeName) {
+		this.typeName = typeName;
+	}
+
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public Date getLastUpdTime() {
+		return lastUpdTime;
+	}
+
+	public void setLastUpdTime(Date lastUpdTime) {
+		this.lastUpdTime = lastUpdTime;
+	}
+
+	public String getMemo() {
+		return memo;
+	}
+
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
+
+	
+	public String getKey(){
+		return parentId+":"+childType;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
+	public String getTypeDesc() {
+		if(type == 1){
+			typeDesc = "无下一步";
+		}else if(type == 2){
+			typeDesc = "有下一步";
+		}else{
+			typeDesc = "";
+		}
+		return typeDesc;
+	}
+
+	public void setTypeDesc(String typeDesc) {
+		this.typeDesc = typeDesc;
+	}
+
+	public int getState() {
+		return state;
+	}
+
+	public void setState(int state) {
+		this.state = state;
+	}
+	
+}

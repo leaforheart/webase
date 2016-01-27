@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- lobhandler类 用于存取流程定义文件 -->
+	<bean id="defaltLobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler"
+		lazy-init="true">
+	</bean>
+
+	<!--
+		用hibernate annotation
+		不影响以前Entity。org.springframework.orm.hibernate3.LocalSessionFactoryBean
+	-->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+
+		<!--
+			工作流的配置 start <property name="lobHandler"> <ref
+			bean="defaltLobHandler" /> </property> <property
+			name="mappingLocations"> <list> <value>
+			WEB-INF/classes/com/mta/admin/screen/**/*.hbm.xml </value> </list>
+			</property> <property name="mappingJarLocations"> <list> <value>
+			WEB-INF/lib/org-fireflow-engine-*.jar </value> </list> </property>
+			工作流的配置 end
+		-->
+
+		<property name="mappingDirectoryLocations">
+			<list>
+				<!--<value>classpath:/com/screen/admin/order/model</value>-->
+			</list>
+		</property>
+		<property name="annotatedClasses">
+			<list>
+				<value>com.inveno.cps.authority.model.Permission</value>
+				<value>com.inveno.cps.authority.model.Role</value>
+				<value>com.inveno.cps.authority.model.RolePermission</value>
+				<value>com.inveno.cps.authority.model.User</value>
+				<value>com.inveno.cps.authority.model.UserRole</value>
+				<value>com.inveno.cps.authority.model.PermissionMapping</value>
+				<value>com.inveno.cps.authority.model.PermissionExclude</value>
+				<value>com.inveno.cps.authority.model.Catalog</value>
+				<value>com.inveno.cps.authenticate.model.UserModel</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQL5InnoDBDialect
+				</prop>
+				<prop key="hibernate.jdbc.fetch_size">50</prop>
+				<prop key="hibernate.jdbc.batch_size">50</prop>
+				<prop key="hibernate.max_fetch_depth">10</prop>
+				<prop key="hibernate.default_batch_fetch_size">1</prop>
+				<prop key="hibernate.query.substitutions">
+					true 'Y', false 'N', yes 'Y', no 'N'
+				</prop>
+				<prop key="hibernate.jdbc.use_streams_for_binary">
+					true
+				</prop>
+				<prop key="hibernate.use_outer_join">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.use_sql_comments">true</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.connection.release_mode">
+					auto
+				</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.cache.provider_class">
+					com.ssp.common.cache.OscacheProvider
+				</prop>
+				<prop key="com.opensymphony.oscache.configurationResourceName">
+					oscache.properties
+				</prop>
+				<prop key="hibernate.cache.use_minimal_puts">true</prop>
+				<prop key="hibernate.cache.use_query_cache">false</prop>
+				<prop key="hibernate.cache.use_structured_entries">
+					true
+				</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="auto-import">false</prop>
+			</props>
+		</property>
+	</bean>
+
+
+
+	<!-- 使用Spring封装的Mail Sender -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host">
+			<value>123.125.50.132</value>
+		</property>
+		<property name="username">
+			<value>yaoyuan</value>
+		</property>
+		<property name="password">
+			<value>000444000</value>
+		</property>
+		<property name="port">
+			<value>25</value>
+		</property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.timeout">25000</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 使用Spring封装的Mail Sender -->
+	<bean id="mailSender1" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host">
+			<value>smtp.126.com</value>
+		</property>
+		<property name="username">
+			<value>temp00001</value>
+		</property>
+		<property name="password">
+			<value>temp00001p</value>
+		</property>
+		<property name="port">
+			<value>25</value>
+		</property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.timeout">25000</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 使用Spring封装的Mail Sender -->
+	<bean id="mailSender2" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host">
+			<value>smtp.163.com</value>
+		</property>
+		<property name="username">
+			<value>temp00002</value>
+		</property>
+		<property name="password">
+			<value>temp00002p</value>
+		</property>
+		<property name="port">
+			<value>25</value>
+		</property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.timeout">25000</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- 使用Spring封装的Mail Sender -->
+	<bean id="mailSender3" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host">
+			<value>smtp.126.com</value>
+		</property>
+		<property name="username">
+			<value>temp00003</value>
+		</property>
+		<property name="password">
+			<value>temp00003p</value>
+		</property>
+		<property name="port">
+			<value>25</value>
+		</property>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.timeout">250000</prop>
+			</props>
+		</property>
+	</bean>
+	<!-- yaoyuan end -->
+</beans>

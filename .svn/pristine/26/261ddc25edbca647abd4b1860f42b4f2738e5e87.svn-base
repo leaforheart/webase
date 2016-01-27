@@ -1,0 +1,242 @@
+package com.inveno.cps.review.service;
+
+import java.nio.ByteBuffer;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.log4j.Logger;
+
+import com.inveno.cps.common.baseclass.AbstractBaseService;
+import com.inveno.cps.common.util.Constants;
+import com.inveno.cps.review.dao.ReviewDao;
+import com.inveno.cps.review.thrift.ReviewService;
+
+public class ReviewServiceImpl extends AbstractBaseService implements ReviewService.Iface {
+	private Logger log = Logger.getLogger(ReviewServiceImpl.class);
+	
+	private ReviewDao reviewDao;
+	
+	public ReviewDao getReviewDao() {
+		return reviewDao;
+	}
+
+	public void setReviewDao(ReviewDao reviewDao) {
+		this.reviewDao = reviewDao;
+	}
+
+	@Override
+	public Map<String, String> addWorkFlow(ByteBuffer file, String filename) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		return map;
+	}
+
+	@Override
+	public Map<String, String> delWorkFlow(String id) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		return map;
+	}
+
+	@Override
+	public Map<String, String> updWorkFlow(ByteBuffer file, String filename) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		return map;
+	}
+
+	@Override
+	public Map<String, String> getWorkFlow(String id) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		return map;
+	}
+
+	@Override
+	public Map<String, String> queWorkFlow(Map<String, String> queryMap) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		return map;
+	}
+
+	@Override
+	public Map<String, String> addBussinessType(String workflowid, String name,String des) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		return map;
+	}
+
+	@Override
+	public Map<String, String> delBussinessType(String id) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		return map;
+	}
+
+	@Override
+	public Map<String, String> updBussinessType(String id, String workflowid,String name, String des) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		return map;
+	}
+
+	@Override
+	public Map<String, String> getBussinessType(String id) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		return map;
+	}
+
+	@Override
+	public Map<String, String> queBussinessType(Map<String, String> queryMap) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		return map;
+	}
+
+	@Override
+	public Map<String, String> startWorkFlow(String bussinesstypeid,String bussinessid) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		return map;
+	}
+
+	@Override
+	public Map<String, String> queBussinessWorkflow(Map<String, String> queryMap) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		return map;
+	}
+
+	@Override
+	public Map<String, String> excuteAction(String bussinesstypeid,String bussinessid) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		return map;
+	}
+
+	@Override
+	public Map<String, String> queBussinessWorkflowLog(String bussinesstypeid,String bussinessid) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		return map;
+	}
+
+	@Override
+	public void ping() {
+		
+	}
+	
+}

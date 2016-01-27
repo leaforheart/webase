@@ -1,0 +1,117 @@
+package com.inveno.cps.thrift;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.LinkedBlockingQueue;
+import org.apache.thrift.TServiceClient;
+import org.apache.thrift.protocol.TProtocol;
+import org.apache.thrift.transport.TTransportException;
+import com.inveno.util.StringUtil;
+
+public class ClientPool {
+	private static String path = PropertiesUtil.class.getResource("")+"client.properties";
+	
+	private static Map<String,LinkedBlockingQueue<TServiceClient>> clientMap = null;
+	private static ClientPool client = new ClientPool();
+	
+	public static TServiceClient getClient(String serviceName) {
+		if(StringUtil.isEmpty(serviceName)) {
+			return null;
+		}
+		if(clientMap==null) {
+			client.init();
+		}
+		if(clientMap.size()==0) {
+			return null;
+		}
+		LinkedBlockingQueue<TServiceClient> queue = clientMap.get(serviceName);
+		if(queue==null) {
+			return null;
+		}
+		TServiceClient t = queue.poll();
+		if(t==null) {
+			String[] services = client.getServices();
+			for(String service:services) {
+				if(serviceName.equals(service.substring(service.lastIndexOf('.')+1))) {
+					t = client.newClient(service);
+					break;
+				}
+			}
+		}
+		return t;
+	}
+	
+	public static void recoverClient(String serviceName,TServiceClient t) {
+		LinkedBlockingQueue<TServiceClient> queue = clientMap.get(serviceName);
+		if(queue==null) {
+			return;
+		}
+		queue.add(t);
+	}
+	
+	private void init() {
+		clientMap = new HashMap<String,LinkedBlockingQueue<TServiceClient>>();
+		int cpu = Runtime.getRuntime().availableProcessors();
+		String[] services = getServices();
+		for(String service:services) {
+			LinkedBlockingQueue<TServiceClient> queue = new LinkedBlockingQueue<TServiceClient>();
+			String serviceName = service.substring(service.lastIndexOf('.')+1);
+			if(newClient(service)==null) {
+				continue;
+			}
+			for(int i=0;i<cpu*2;i++) {
+				queue.add(newClient(service));
+			}
+			clientMap.put(serviceName, queue);
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	private <T extends TServiceClient> T newClient(String service) {
+		T t = null;
+		try {
+			Constructor<T> c = (Constructor<T>) Class.forName(service+"$Client").getConstructor(TProtocol.class);
+			String serviceName = service.substring(service.lastIndexOf('.')+1);
+			t = c.newInstance(ClientProtocolFactory.factory(serviceName));
+			if(!t.getInputProtocol().getTransport().isOpen()) {
+				t.getInputProtocol().getTransport().open();
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		} catch (SecurityException e) {
+			e.printStackTrace();
+			return null;
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+			return null;
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+			return null;
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+			return null;
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+			return null;
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+			return null;
+		} catch (TTransportException e) {
+			e.printStackTrace();
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		return t;
+	}
+	
+	private String[] getServices() {
+		String services = PropertiesUtil.getProperty(path, "client");
+		String[] service = services.split(",");
+		return service;
+	}
+}

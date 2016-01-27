@@ -1,0 +1,141 @@
+package com.inveno.cps.dictionary.service;
+
+import java.util.HashMap;
+import java.util.Map;
+import org.apache.log4j.Logger;
+import com.inveno.cps.common.baseclass.AbstractBaseService;
+import com.inveno.cps.common.util.Constants;
+import com.inveno.cps.dictionary.dao.DictionaryDao;
+import com.inveno.cps.dictionary.thrift.Dictionary;
+import com.inveno.cps.dictionary.thrift.DictionaryService;
+
+public class DictionaryServiceImpl extends AbstractBaseService implements DictionaryService.Iface {
+	
+	private Logger log = Logger.getLogger(DictionaryServiceImpl.class);
+	
+	private DictionaryDao dictionaryDao;
+	
+	public Logger getLog() {
+		return log;
+	}
+
+	public void setLog(Logger log) {
+		this.log = log;
+	}
+
+	public DictionaryDao getDictionaryDao() {
+		return dictionaryDao;
+	}
+
+	public void setDictionaryDao(DictionaryDao dictionaryDao) {
+		this.dictionaryDao = dictionaryDao;
+	}
+
+	@Override
+	public Map<String, String> queDictionary(Map<String, String> queryMap) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		}  catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		
+		return map;
+	}
+
+	@Override
+	public Map<String, String> addDictionary(Dictionary dictionary) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		}  catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		
+		return map;
+	}
+
+	@Override
+	public Map<String, String> updDictionary(Dictionary dictionary) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		}  catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		
+		return map;
+	}
+
+	@Override
+	public Map<String, String> getDictionary(String id) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		}  catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		
+		return map;
+	}
+
+	@Override
+	public Map<String, String> queParentType() {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		}  catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		
+		return map;
+	}
+
+	@Override
+	public Map<String, String> getParentType(String parentId) {
+		HashMap<String, String> map = new HashMap<String,String>();
+		try {
+			
+			
+			map.put(Constants.RETURN_CODE, Constants.SUCCESS_CODE);
+		}  catch (Exception e) {
+			log.error(e.getMessage());
+			e.printStackTrace();
+			map.put(Constants.RETURN_CODE, Constants.SERVER_CODE);
+			return map;
+		}
+		
+		return map;
+	}
+
+	@Override
+	public void ping() {
+		
+	}
+
+}
